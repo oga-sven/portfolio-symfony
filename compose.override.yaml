@@ -20,5 +20,17 @@ services:
       - host.docker.internal:host-gateway
     tty: true
 
+  node:
+    image: node:23
+    container_name: symfony_node
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html  # Map your local project directory to the container
+    command: npm run watch  # Tailwind watch command
+    depends_on:
+      - php
+    stdin_open: true
+    tty: true
+
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
