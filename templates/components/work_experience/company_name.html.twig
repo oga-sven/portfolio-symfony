@@ -1,0 +1,11 @@
+{% macro company_name(company, selectedId, setSelectedExperienceId) %}
+	<li data-select-work-experience={{company.id}} class="cursor-pointer p-4 rounded-lg hover:bg-twilight-800 transition-colors {{ selectedId == company.id ? 'font-semibold italic' : '' }}">
+		<div class='flex items-center space-x-4 pointer-events-none'>
+			<img src={{ asset(company.logo) }} alt="{{ company.companyName }} logo" class='w-12 h-12 object-contain rounded-full'/>
+			<div>
+				<p class='font-semibold text-lg'>{{ company.companyName }}</p>
+				<p class='text-sm text-gray-300'>{{ company.role }}</p>
+			</div>
+		</div>
+	</li>
+{% endmacro %}

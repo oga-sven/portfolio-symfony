@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!
+{% endblock %}
+
+{% block body %}
+
+	{% include 'index/parts/_hero.html.twig' with {
+        age: 123
+    } only %}
+	{% include 'index/parts/_work_experience.html.twig' with {
+        experiences
+    } only %}
+
+{% endblock %}
