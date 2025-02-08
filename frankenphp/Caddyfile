@@ -57,3 +57,7 @@
 		hide *.php
 	}
 }
+
+{$NEXTJS_DOMAIN:nextjs.localhost} {
+    reverse_proxy nextjs:3000
+}

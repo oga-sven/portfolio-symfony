@@ -91,4 +91,29 @@ RUN set -eux; \
 	composer dump-autoload --classmap-authoritative --no-dev; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
-	chmod +x bin/console; sync;
+	chmod +x bin/console; sync; \
+	bin/console tailwind:init;
+
+##############################
+# Stage 2: Next.js Build Stage
+##############################
+
+FROM node:20-alpine as nextjs
+WORKDIR /app
+
+# Install git for cloning the repo
+RUN apk update && apk add --no-cache git
+
+ARG NEXTJS_REPO
+
+# Conditionally clone the repository if NEXTJS_REPO is provided
+RUN if [ -n "$NEXTJS_REPO" ]; then \
+      echo "Cloning repository from $NEXTJS_REPO"; \
+      git clone "$NEXTJS_REPO" .; \
+    else \
+      echo "NEXTJS_REPO not provided, expecting local code"; \
+    fi
+
+RUN npm install && npm run build
+
+CMD ["npm", "start"]

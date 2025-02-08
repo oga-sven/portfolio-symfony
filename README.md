@@ -1,17 +1,17 @@
-# Symfony Docker
+# Introduction
 
-A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework,
-with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!
+My portfolio build in symfonyphp. Cloned from symfony-docker and adjusted to my needs
+The docker compose here also clones, builds, and deploys the [nextjs portfolio repo](https://github.com/oga-sven/portfolio) 
 
-![CI](https://github.com/dunglas/symfony-docker/workflows/CI/badge.svg)
+## First use (Development setup)
+1. linux: `cp .env .env.dev` windows `copy .env .env.dev`
+2. Add or remove the `NEXTJS_REPO` line depending if you want docker to set it up for you (WIP)
+3. `docker compose build --no-cache`
+4. `docker compose up --pull always -d --wait`
+5. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
 
-## Getting Started
 
-1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/) (v2.10+)
-2. Run `docker compose build --no-cache` to build fresh images
-3. Run `docker compose up --pull always -d --wait` to set up and start a fresh Symfony project
-4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-5. Run `docker compose down --remove-orphans` to stop the Docker containers.
+## everything below here is from symfony-docker documentation and still work in progress 
 
 ## Features
 
@@ -44,8 +44,4 @@ with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) 
 
 ## License
 
-Symfony Docker is available under the MIT License.
-
-## Credits
-
-Created by [Kévin Dunglas](https://dunglas.dev), co-maintained by [Maxime Helias](https://twitter.com/maxhelias) and sponsored by [Les-Tilleuls.coop](https://les-tilleuls.coop).
+MIT License.
